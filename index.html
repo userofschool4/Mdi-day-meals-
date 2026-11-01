@@ -673,7 +673,7 @@
       doc.save(`TGMS_Pegadapally_MDM_Signed_Report.pdf`);
       toast("Downloaded Official Signed PDF!");
     }
-          window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', () => {
       const t = todayISO();
       ['aDate','mDate','repStart','repEnd'].forEach(id => document.getElementById(id).value = t);
       document.getElementById('repMonth').value = t.slice(0,7);
@@ -682,5 +682,19 @@
       syncCloud();
     });
   </script>
+
+  <!-- PWA Install Manifest Link -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Service Worker Registration Script -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Registered Successfully for Offline Use'))
+        .catch((err) => console.log('Service Worker Registration Failed:', err));
+    }
+  </script>
 </body>
 </html>
+
